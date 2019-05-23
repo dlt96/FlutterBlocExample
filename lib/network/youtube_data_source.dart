@@ -27,7 +27,7 @@ class YoutubeDataSource {
     if (response.statusCode == 200) {
       return YoutubeSearchResult.fromJson(response.body);
     } else {
-      throw YoutubeSearchError(json.decode(response.body));
+      throw YoutubeSearchError(json.decode(response.body)['error']['message']);
     }
   }
 }
