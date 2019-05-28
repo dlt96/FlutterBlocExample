@@ -13,3 +13,5 @@ pubspec.lock
 doc/api/
 lib/network/api_key.dart
 .idea/
+lib/ui/search/search_event.g.dart
+lib/ui/search/search_state.g.dart
