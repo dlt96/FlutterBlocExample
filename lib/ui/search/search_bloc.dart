@@ -7,7 +7,7 @@ import 'package:youtube_search/data/model/search/youtube_search_error.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final YoutubeRepository _youtubeRepository;
 
-  SearchBloc(this._youtubeRepository) : super();
+  SearchBloc(this._youtubeRepository) : super(); //DI
 
   void onSearchInitiated(String query) {
     dispatch(SearchInitiated((b) => b..query = query));
@@ -18,13 +18,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
   @override
-  SearchState get initialState => SearchState.initial();
+  SearchState get initialState =>
+      SearchState.initial(); //state before any event've been dispatched
 
   @override
   Stream<SearchState> mapEventToState(
       SearchState currentState, SearchEvent event) async* {
     if (event is SearchInitiated) {
-      yield* mapSearchInitiated(event);
+      yield* mapSearchInitiated(event); //adds the result to the output Stream
     } else if (event is FetchNextResultPage) {
       yield* mapFetchNextResultPage();
     }
